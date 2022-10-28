@@ -31,7 +31,7 @@ public class Client {
             Scanner scanner = new Scanner(System.in);
             while (socket.isConnected()) {
                 String messageToSend = scanner.nextLine();
-                if (messageToSend == "send File") {
+                if (messageToSend.equals("send File")) {
                     fileHandle = new FileHandle(socket);
                     try {
                         fileHandle.sendFile();
@@ -89,7 +89,8 @@ public class Client {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your username for the group chat: ");
         String username = scanner.nextLine();
-
+        System.out.println("Connecting to server...");
+        System.out.println("Connected to server");
         Socket socket = new Socket("localhost", 5430);
         Client client = new Client(socket, username);
         client.listenForMessage();
